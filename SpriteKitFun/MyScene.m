@@ -64,7 +64,7 @@ typedef enum
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:_backgroundSprite];
         
-        if (location.y < -200.0) {
+        if (location.y < -100.0) {
             
             _playerSprite.position = CGPointMake(location.x, _playerSprite.position.y);
         } else {
@@ -126,7 +126,7 @@ typedef enum
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:_backgroundSprite];
         
-        if (location.y < -200.0) {
+        if (location.y < -100.0) {
             
             _playerSprite.position = CGPointMake(location.x, _playerSprite.position.y);
         }
