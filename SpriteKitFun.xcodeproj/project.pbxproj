@@ -24,6 +24,7 @@
 		9339EA2018F3830F00FA09E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9339E9FB18F3830F00FA09E5 /* UIKit.framework */; };
 		9339EA2818F3830F00FA09E5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9339EA2618F3830F00FA09E5 /* InfoPlist.strings */; };
 		9339EA2A18F3830F00FA09E5 /* SpriteKitFunTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9339EA2918F3830F00FA09E5 /* SpriteKitFunTests.m */; };
+		9339EA3418F38A2400FA09E5 /* box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9339EA3318F38A2400FA09E5 /* box@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		9339EA2518F3830F00FA09E5 /* SpriteKitFunTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpriteKitFunTests-Info.plist"; sourceTree = "<group>"; };
 		9339EA2718F3830F00FA09E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9339EA2918F3830F00FA09E5 /* SpriteKitFunTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpriteKitFunTests.m; sourceTree = "<group>"; };
+		9339EA3318F38A2400FA09E5 /* box@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "box@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				9339EA0E18F3830F00FA09E5 /* ViewController.h */,
 				9339EA0F18F3830F00FA09E5 /* ViewController.m */,
 				9339EA1118F3830F00FA09E5 /* MyScene.h */,
+				9339EA3318F38A2400FA09E5 /* box@2x.png */,
 				9339EA1218F3830F00FA09E5 /* MyScene.m */,
 				9339EA1418F3830F00FA09E5 /* Spaceship.png */,
 				9339EA1618F3830F00FA09E5 /* Images.xcassets */,
@@ -244,6 +247,7 @@
 				9339EA1718F3830F00FA09E5 /* Images.xcassets in Resources */,
 				9339EA1518F3830F00FA09E5 /* Spaceship.png in Resources */,
 				9339EA0D18F3830F00FA09E5 /* Main.storyboard in Resources */,
+				9339EA3418F38A2400FA09E5 /* box@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
