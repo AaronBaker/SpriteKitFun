@@ -7,6 +7,7 @@
 //
 
 #import "MyScene.h"
+@import CoreMotion;
 
 @implementation MyScene
 
@@ -14,16 +15,24 @@
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
-        self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
+        SKNode *wall = [SKNode node];
         
-        SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+        wall.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
         
-        myLabel.text = @"Hello, World!";
-        myLabel.fontSize = 30;
-        myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                       CGRectGetMidY(self.frame));
+        [self addChild:wall];
         
-        [self addChild:myLabel];
+        CMMotionManager *motionManager = [[CMMotionManager alloc] init];
+        
+        [motionManager startAccelerometerUpdatesToQueue:[[NSOperationQueue alloc] init] withHandler:^(CMAccelerometerData *data, NSError *error){
+            
+            self.physicsWorld.gravity = CGVectorMake(data.acceleration.x * 10, data.acceleration.y * 10);
+            
+            
+        }];
+
+        
+        
+
     }
     return self;
 }
@@ -32,17 +41,23 @@
     /* Called when a touch begins */
     
     for (UITouch *touch in touches) {
+        
         CGPoint location = [touch locationInNode:self];
         
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
+        SKSpriteNode *box = [SKSpriteNode
+                             spriteNodeWithColor:[UIColor redColor]
+                             size:CGSizeMake(40.0, 40.0)];
         
-        sprite.position = location;
         
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
+        box.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:box.size];
         
-        [sprite runAction:[SKAction repeatActionForever:action]];
+        box.position = location;
         
-        [self addChild:sprite];
+        [self addChild:box];
+        
+        
+        
+
     }
 }
 
