@@ -8,22 +8,25 @@
 
 #import "MyScene.h"
 
+@interface MyScene ()
+@property SKEmitterNode *emitter;
+@end
+
 @implementation MyScene
 
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
-        self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
+        NSString *particlePath = [[NSBundle mainBundle] pathForResource:@"FIRESTORM" ofType:@"sks"];
+        _emitter = [NSKeyedUnarchiver unarchiveObjectWithFile:particlePath];
         
-        SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+        _emitter.particlePosition = CGPointMake(300.0, 500.0);
+        _emitter.particleBirthRate = 0.0;
         
-        myLabel.text = @"Hello, World!";
-        myLabel.fontSize = 30;
-        myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                       CGRectGetMidY(self.frame));
-        
-        [self addChild:myLabel];
+        [self addChild:_emitter];
+
+
     }
     return self;
 }
@@ -34,15 +37,33 @@
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
         
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
+        _emitter.particlePosition = location;
+        _emitter.particleBirthRate = 1000.0;
         
-        sprite.position = location;
+    }
+}
+
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    /* Called when a touch begins */
+    
+    for (UITouch *touch in touches) {
+        CGPoint location = [touch locationInNode:self];
         
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
+        _emitter.particlePosition = location;
+
         
-        [sprite runAction:[SKAction repeatActionForever:action]];
+    }
+}
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    /* Called when a touch begins */
+    
+    for (UITouch *touch in touches) {
+        CGPoint location = [touch locationInNode:self];
         
-        [self addChild:sprite];
+        _emitter.particlePosition = location;
+        _emitter.particleBirthRate = 0.0;
+        
     }
 }
 
